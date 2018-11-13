@@ -1,8 +1,8 @@
 #include "RiskTerritory.h"
 
-RiskTerritory::RiskTerritory(const SDL_Color &color, int id, const std::string &name) :
+RiskTerritory::RiskTerritory(const SDL_Color &color, const std::string &name) :
 color_(color),
-id_(id),
+//id_(id),
 name_(name)
 { }
 

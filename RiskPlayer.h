@@ -4,7 +4,12 @@
 
 class RiskPlayer
 {
+public:
+    RiskPlayer();
+    ~RiskPlayer();
 
+private:
+    RiskPlayer(const RiskPlayer&);
 };
 
 

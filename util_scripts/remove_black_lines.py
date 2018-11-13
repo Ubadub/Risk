@@ -1,5 +1,5 @@
 """
-A little script to remove the black lines between map regions.
+A little script to remove the black lines between map territories on an image of a map.
 """
 from PIL import Image
 

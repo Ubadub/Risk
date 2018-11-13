@@ -9,7 +9,7 @@
 class RiskTerritory
 {
 public:
-    RiskTerritory(const SDL_Color &color, int id, const std::string &name);
+    RiskTerritory(const SDL_Color &color, const std::string &name);
 
     bool isRGBColor(const SDL_Color&) const;
 
@@ -18,8 +18,10 @@ public:
     const std::string &getName() const;
 
 private:
+    RiskTerritory(const RiskTerritory&);
+
     const SDL_Color color_;
-    int id_;
+    //int id_;
     std::string name_;
     std::pair<int, int> unit_position_;
 };

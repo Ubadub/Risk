@@ -9,19 +9,21 @@
 #include <SDL2_image/SDL_image.h>
 #include "RiskGame.h"
 
-const char *RiskGame::MAP_DATA_PATH = "resources/map_data.csv";;
-const char *RiskGame::MAP_IMG_PATH = "resources/game_map.bmp";;
+const char *RiskGame::ADJACENCIES_DATA_PATH = "resources/adjacencies.csv";
+const char *RiskGame::MAP_DATA_PATH = "resources/map_data.csv";
+const char *RiskGame::MAP_IMG_PATH = "resources/game_map.bmp";
 
 RiskGame::RiskGame() :
-map_(new RiskMap(MAP_IMG_PATH, MAP_DATA_PATH))
-{ }
+map_(new RiskMap(MAP_IMG_PATH, MAP_DATA_PATH, ADJACENCIES_DATA_PATH))
+{
+}
 
 RiskGame::~RiskGame()
 {
     delete map_;
 }
 
-void RiskGame::loop()
+void RiskGame::loop() const
 {
     do
     {
@@ -29,12 +31,12 @@ void RiskGame::loop()
     } while (getUserInput());
 }
 
-void RiskGame::draw()
+void RiskGame::draw() const
 {
     map_->draw();
 }
 
-bool RiskGame::getUserInput()
+bool RiskGame::getUserInput() const
 {
     SDL_Event e;
 
@@ -52,10 +54,16 @@ bool RiskGame::getUserInput()
             }
             case SDL_MOUSEBUTTONUP:
             {
-                RiskTerritory *territory = map_->getTerritoryByCoordinates(e.button.x, e.button.y);
+                RiskTerritory const *territory = map_->getTerritoryByCoordinates(e.button.x, e.button.y);
                 if (territory != nullptr)
                 {
-                    std::cout << territory->getName();
+                    std::cout << territory->getName() << std::endl;
+                    auto adjacents = map_->getTerritoriesAdjacentTo(territory);
+                    std::cout << "Adjacents: " << std::endl;
+                    for (auto adjacent : adjacents)
+                    {
+                        std::cout << adjacent->getName() << std::endl;
+                    }
                 }
                 else
                 {
