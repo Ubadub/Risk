@@ -3,3 +3,8 @@
 //
 
 #include "RiskPlayer.h"
+
+const SDL_Color &RiskPlayer::getDisplayColor() const
+{
+    return display_color_;
+}

@@ -14,7 +14,7 @@ const char *RiskGame::MAP_DATA_PATH = "resources/map_data.csv";
 const char *RiskGame::MAP_IMG_PATH = "resources/game_map.bmp";
 
 RiskGame::RiskGame() :
-map_(new RiskMap(MAP_IMG_PATH, MAP_DATA_PATH, ADJACENCIES_DATA_PATH))
+map_(new RiskMap(*MAP_IMG_PATH, *MAP_DATA_PATH, *ADJACENCIES_DATA_PATH))
 {
 }
 

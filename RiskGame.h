@@ -10,7 +10,6 @@
 #include <string>
 
 #include <SDL2/SDL.h>
-#include "RiskPlayer.h"
 #include "RiskTerritory.h"
 #include "RiskMap.h"
 
@@ -27,10 +26,8 @@ private:
     static const char *ADJACENCIES_DATA_PATH;
     static const char *MAP_DATA_PATH;
     static const char *MAP_IMG_PATH;
-    static const int numPlayers_ = 4;
 
     RiskMap *const map_;
-    RiskPlayer *players;
 
     RiskGame(const RiskGame&);
 
